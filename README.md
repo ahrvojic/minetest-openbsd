@@ -6,14 +6,12 @@
 
 Full Minetest installation steps from `pkg_add` to dedicated user creation:
 
-```
-doas pkg_add minetest
+```bash
+$ doas pkg_add minetest
+$ doas mkdir /var/games/minetest
 
-doas mkdir /var/games/minetest
-
-doas groupadd -g 2000 _minetest
-
-doas useradd \
+$ doas groupadd -g 2000 _minetest
+$ doas useradd \
 -u 2000 \
 -p '*' \
 -g _minetest \
@@ -23,13 +21,13 @@ doas useradd \
 -s /sbin/nologin \
 _minetest
 
-doas chown _minetest:_minetest /var/games/minetest
+$ doas chown _minetest:_minetest /var/games/minetest
 
-doas cp $HOME/minetest-openbsd/etc/minetest.conf /etc/minetest.conf
-doas cp $HOME/minetest-openbsd/etc/rc.d/minetest /etc/rc.d/minetest
+$ doas cp $HOME/minetest-openbsd/etc/minetest.conf /etc/minetest.conf
+$ doas cp $HOME/minetest-openbsd/etc/rc.d/minetest /etc/rc.d/minetest
 
-doas rcctl enable minetest
-doas rcctl start minetest
+$ doas rcctl enable minetest
+$ doas rcctl start minetest
 ```
 
 Note that [SQLite](https://www.sqlite.org/) will be the storage engine by default; you may want to switch to [PostgreSQL](https://postgresql.org) for the [Minetest databases that support it](https://wiki.minetest.net/Database_backends).
