@@ -10,18 +10,16 @@ Full Minetest installation steps from `pkg_add` to dedicated user creation:
 $ doas pkg_add minetest
 $ doas mkdir /var/games/minetest
 
-$ doas groupadd -g 2000 _minetest
 $ doas useradd \
--u 2000 \
 -p '*' \
--g _minetest \
+-g games \
 -c 'Minetest Daemon' \
 -L daemon \
 -d /var/games/minetest \
 -s /sbin/nologin \
 _minetest
 
-$ doas chown _minetest:_minetest /var/games/minetest
+$ doas chown _minetest /var/games/minetest
 
 $ doas cp $HOME/minetest-openbsd/etc/minetest.conf /etc/minetest.conf
 $ doas cp $HOME/minetest-openbsd/etc/rc.d/minetest /etc/rc.d/minetest
